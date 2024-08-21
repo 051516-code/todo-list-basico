@@ -49,6 +49,7 @@ async onTaskStatusChange(task : Task){
     this.presentAlert('Borrando', 'La Tarea se ha borrado por completo')
   }
 
+  //TODO: alerta para avisar los cambios dinamicos
   async presentAlert( sub : string , msg : string){
     const alert = await this.alertCtrl.create({
       header: 'Alerta',
