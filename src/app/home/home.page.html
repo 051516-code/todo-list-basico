@@ -5,15 +5,17 @@
 </ion-header>
 
 <ion-content>
+  <h1>Creacion de tareas por hacer</h1>
   <ion-item>
     <ion-input placeholder="Agregar una nueva tarea" [(ngModel)]="newTask"></ion-input>
     <ion-button (click)="addTask()">Agregar</ion-button>
   </ion-item>
 
-  <ion-list>
+  <h3 *ngIf="isVisible">Lista de tareas</h3>
+  <ion-list >
     <ion-item *ngFor="let task of tasks">
       <ion-label [class.completed]="task.completed">{{ task.name }}</ion-label>
-      <ion-checkbox slot="end" [(ngModel)]="task.completed"></ion-checkbox>
+      <ion-checkbox slot="end" [(ngModel)]="task.completed" (ionChange)="onTaskStatusChange(task)"></ion-checkbox>
       <ion-button slot="end" color="danger" (click)="deleteTask(task)">Eliminar</ion-button>
     </ion-item>
   </ion-list>
